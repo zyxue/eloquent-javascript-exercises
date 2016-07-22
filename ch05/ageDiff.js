@@ -13,15 +13,13 @@ ancestry.forEach(function(person) {
     byName[person.name] = person;
 });
 
-var ageDiff = ancestry.map(function(person) {
-    var mother = byName[person.mother];
-    if (mother != undefined) {
-        return person.born - mother.born;
-    }
-})
 
-ageDiff = ageDiff.filter(function(obj) {
-    return obj != undefined;
+function hasKnownMother(person) {
+    return byName[person.mother] != undefined;
+}
+
+var ageDiff = ancestry.filter(hasKnownMother).map(function(person) {
+    return person.born - byName[person.mother].born;
 })
 
 console.log(average(ageDiff));
