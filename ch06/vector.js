@@ -1,16 +1,15 @@
 function Vector(x, y) {
     this.x = x;
     this.y = y;
-
-    this.plus = function(anotherVector) {
-        return new Vector(x + anotherVector.x, y + anotherVector.y);
-    };
-
-    this.minus = function(anotherVector) {
-        return new Vector(x - anotherVector.x, y - anotherVector.y);
-    };
-
 }
+
+Vector.prototype.plus = function(anotherVector) {
+    return new Vector(this.x + anotherVector.x, this.y + anotherVector.y);
+};
+
+Vector.prototype.minus = function(anotherVector) {
+    return new Vector(this.x - anotherVector.x, this.y - anotherVector.y);
+};
 
 Object.defineProperty(Vector.prototype, "length", {
     get: function() {
