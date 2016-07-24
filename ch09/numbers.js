@@ -1,4 +1,7 @@
 // Fill in this regular expression.
+
+// (\.\d+|\d+(\.?\d*)?) explanation: a number can only be .123 or 123. cannot
+// having dots on both side of a number
 var number = /^[+-]?(\.\d+|\d+(\.?\d*)?)([eE][+-]?\d+)?$/;
 
 // Tests:
