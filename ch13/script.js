@@ -26,7 +26,32 @@ function buildTable(array) {
 }
 
 
-var table = buildTable(MOUNTAINS);
+// var table = buildTable(MOUNTAINS);
+// document.body.appendChild(table);
 
-document.body.appendChild(table);
+function byTagName(node, tagName) {
+    if (node.nodeType !== document.ELEMENT_NODE)
+        return [];
 
+    var result = [];
+
+    for (var i = 0; i < node.children.length; i++) {
+        var val = node.children[i];
+        if (val.tagName.toLowerCase() === tagName.toLowerCase()) {
+            result.push(val);
+        } else {
+            if (val.nodeType == document.ELEMENT_NODE)
+                result = result.concat(byTagName(val, tagName));
+        }
+    }
+    return result;
+}
+
+
+console.log(byTagName(document.body, "h1").length);
+// → 1
+console.log(byTagName(document.body, "span").length);
+// → 3
+var para = document.querySelector("p");
+console.log(byTagName(para, "span").length);
+// → 2
