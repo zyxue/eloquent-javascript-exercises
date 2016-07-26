@@ -90,6 +90,9 @@ function RTextCell(text) {
 }
 
 RTextCell.prototype = Object.create(TextCell.prototype);
+// learned from the secrets of javascript ninja, but it doesn't work
+// http://stackoverflow.com/questions/4166616/understanding-the-difference-between-object-create-and-new-somefunction
+// RTextCell.prototype = new TextCell();
 
 RTextCell.prototype.draw = function(width, height) {
     var result = [];
