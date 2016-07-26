@@ -47,11 +47,34 @@ function byTagName(node, tagName) {
     return result;
 }
 
+// console.log(byTagName(document.body, "h1").length);
+// // → 1
+// console.log(byTagName(document.body, "span").length);
+// // → 3
+// var para = document.querySelector("p");
+// console.log(byTagName(para, "span").length);
+// // → 2
 
-console.log(byTagName(document.body, "h1").length);
-// → 1
-console.log(byTagName(document.body, "span").length);
-// → 3
-var para = document.querySelector("p");
-console.log(byTagName(para, "span").length);
-// → 2
+function animateCatHat() {
+    var cat = document.querySelector("img#cat");
+    var hat = document.querySelector("img#hat");
+
+    var angle = 0, lastTime = null;
+
+    function animate(time) {
+        if (lastTime != null)
+            angle += (time - lastTime) * 0.001;
+        lastTime = time;
+
+        cat.style.top = (Math.sin(angle) * 200) + 200 + "px";
+        cat.style.left = (Math.cos(angle) * 200) + 200 + "px";
+
+        hat.style.top = (Math.sin(-angle) * 200)  + 200 + "px";
+        hat.style.left = (Math.cos(-angle) * 200) + 200 + "px";
+
+        requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+}
+
+animateCatHat();
