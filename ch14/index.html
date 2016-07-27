@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <style>
+         /* Defines a cleaner look for tables */
+         table  { border-collapse: collapse; }
+         td, th { border: 1px solid black; padding: 3px 8px; }
+         th     { text-align: left; }
+        </style>
+
+        <style>
+            body {
+            height: 200px;
+            background: beige;
+            
+            }
+
+
+         .dot {
+             height: 8px; width: 8px;
+             border-radius: 4px; /* rounds corners */
+             background: blue;
+             position: absolute;
+         }
+
+         .progress {
+             border: 1px solid blue;
+             width: 100px;
+             position: fixed;
+             top: 10px; right: 10px;
+         }
+
+         .progress > div {
+             height: 12px;
+             background: blue;
+             width: 0%;
+         }
+
+         body {
+             height: 2000px;
+         }
+
+
+        </style>
+    </head>
+
+
+    <body>
+        <p>A paragraph with a <button>A button</button>.</p>
+
+        <button>A</button>
+        <button>B</button>
+        <button>C</button>
+        
+        <a href="https://developer.mozilla.org/">MDN</a>
+
+        <p>This page turns violet when you hold the V key.</p>
+
+        <p>Drag the bar to change its width:</p>
+        <div style="background: orange; width: 60px; height: 20px">
+        </div>
+
+        <p>Hover over this <strong>paragraph</strong>.</p>
+
+
+        <div class="progress"><div></div></div>
+        <p>Scroll me...</p>
+
+        <p>Name: <input type="text" data-help="Your full name"></p>
+        <p>Age: <input type="text" data-help="Age in years"></p>
+        <p id="help"></p>
+
+        <textarea>Type something here...</textarea>
+
+       <script src="/assets/bundle.js"></script>
+
+ 
+
+
+   </body>
+</html>
+
