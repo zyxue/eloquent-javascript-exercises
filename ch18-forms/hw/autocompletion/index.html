@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+    </head>
+
+
+    <body>
+
+        <input type="text" id="field">
+        <div id="suggestions" style="cursor: pointer"></div>
+
+        <script>
+         // Builds up an array with global variable names, like
+         // 'alert', 'document', and 'scrollTo'
+         var terms = [];
+         for (var name in window)
+         terms.push(name);
+
+         var text = document.querySelector("#field");
+         var suggestions = document.querySelector("#suggestions");
+
+         text.addEventListener("input", function() {
+             suggestions.textContent = '';
+             var suggestedTerms = [];
+             if (text.value !== '') {
+                 for (var i = 0; i < terms.length; i ++) {
+                     if (terms[i].indexOf(text.value) === 0) {
+                         var html = '<span id="' + terms[i] + '">' + terms[i] + '</span>' + '<br>';
+                         suggestions.innerHTML += html;
+		                     suggestedTerms.push(terms[i]);
+                     }
+                 }
+                 console.log(suggestedTerms);
+                 // It appears that it won't work if adding EventListener
+                 // when the html is right being added in the for loop
+                 for (var i = 0; i < suggestedTerms.length; i ++) {
+                     /* need to keep the value of i. http://stackoverflow.com/questions/14177757/javascript-multiple-dynamic-addeventlistener-created-in-for-loop-passing-param */
+                     (function(i) {var span = document.querySelector('#' + suggestedTerms[i]);
+                         span.addEventListener('click', function() {
+			                       text.value = suggestedTerms[i];
+                         });
+                     }(i));
+                 }
+
+             }
+         });
+        </script>
+
+
+
+    </body>
+</html>
